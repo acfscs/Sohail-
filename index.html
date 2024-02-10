@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat with Friends</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .messages {
+      list-style-type: none;
+      padding: 0;
+    }
+    .message {
+      margin-bottom: 10px;
+    }
+    .message .sender {
+      font-weight: bold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Chat with Friends</h1>
+    <ul class="messages" id="messages">
+      <!-- Messages will be added here dynamically -->
+    </ul>
+    <input type="text" id="messageInput" placeholder="Type your message...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var messageInput = document.getElementById("messageInput");
+      var message = messageInput.value.trim();
+      if (message !== "") {
+        var messagesContainer = document.getElementById("messages");
+        var newMessage = document.createElement("li");
+        newMessage.innerHTML = "<div class='message'><span class='sender'>You:</span> " + message + "</div>";
+        messagesContainer.appendChild(newMessage);
+        messageInput.value = "";
+        messageInput.focus();
+      }
+    }
+  </script>
+</body>
+</html>
